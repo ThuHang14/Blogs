@@ -123,6 +123,7 @@ public class Book {
     @Column(name = "published_at")
     private LocalDateTime publishedAt;
 
+//phần này là khóa 1:N 
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author_id;
