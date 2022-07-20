@@ -135,7 +135,7 @@ public class Book {
     }
 } 
 ```
-4. chạy dự án và mở database kiểm tra kết quả sẽ được như sau :
+4. chạy dự án và mở database kiểm tra kết quả sẽ được như sau :  
    ![image](https://user-images.githubusercontent.com/96046778/180000514-7710aa77-9088-47e8-8788-6dd70ac91c1c.png)
 5. giờ ta sẽ thêm dữ liệu vào bằng faker . Hãy tạo 1 file trong thư mục test của dự án và chèn dữ liệu như sau :
 ```java
@@ -201,9 +201,9 @@ public class InitData {
  
 ```
 6. giờ mở database xem kết quả ta được như sau : 
-- dữ liệu Author
+- dữ liệu Author  
   ![image](https://user-images.githubusercontent.com/96046778/180002066-b15edc3f-451b-4606-97d9-6f90a403571b.png)
-- dữ liệu Book
+- dữ liệu Book  
   ![image](https://user-images.githubusercontent.com/96046778/180002365-72cccc33-a820-49ff-8fe5-8be81a5d11b6.png)
 7.Giờ bạn tạo thêm thư mục repository với 2 file con là `AuthorRepository.java` `BookRepository.java`
 - trong AuthorRepository.java 
@@ -265,7 +265,7 @@ public interface BookRepository extends JpaRepository<Book, Long>, CrudRepositor
 }
 ```
 - trong file trên `@Modifying` dùng để chú thích phuơng thức kho lưu trữ , nếu không có chương trình sẽ báo lỗi `could not extract resultset`
-- cấu trúc thư mục sẽ như thế này :
+- cấu trúc thư mục sẽ như thế này :  
   ![image](https://user-images.githubusercontent.com/96046778/180003185-48395b2b-adf2-4f69-ad58-b98dfc61f418.png)
 
 7. Giờ thì chạy test cho các câu query đã viết ở trên :
