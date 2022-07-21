@@ -11,9 +11,9 @@
 --------------------------------------------------------
 --------------------------------------------------------
 ## 1. Xác định một Native queries
-- Khi sử dụng JPA thuần hoặc Hibernate, việc xác định và thực hiện một truy vấn gốc yêu cầu nhiều bước. Annotation  `@Query` của Spring Data sẽ xóa tất cả mã soạn sẵn. Chúng tôi đã sử dụng chú thích đó trong một bài đăng trước để xác định một truy vấn JPQL tùy chỉnh.
+- Khi sử dụng JPA thuần hoặc Hibernate, việc xác định và thực hiện một truy vấn gốc yêu cầu nhiều bước. Annotation  `@Query` của Spring Data sẽ xóa tất cả mã soạn sẵn. với @Query bạn có thể khai báo câu query cho các method trong repository
 
-- Khi xác định một truy vấn gốc, bạn chú thích phương thức lưu trữ của mình bằng `@Query`, đặt thuộc tính `nativeQuery=true` và cung cấp một câu lệnh SQL làm giá trị. Như được hiển thị trong đoạn mã sau, bạn có thể sử dụng các tham số liên kết theo cách giống như trong một truy vấn JPQL tùy chỉnh.
+- Khi xác định một truy vấn gốc, bạn chú thích phương thức lưu trữ của mình bằng annotation `@Query`, đặt thuộc tính `nativeQuery=true` và cung cấp một câu lệnh SQL làm giá trị. Như được hiển thị trong đoạn mã sau, bạn có thể sử dụng các tham số liên kết theo cách giống như trong một truy vấn JPQL tùy chỉnh.
 ```java
 @Repository
 public interface AuthorRepository extends CrudRepository<Author, Long>, PagingAndSortingRepository<Author, Long> {
@@ -30,7 +30,7 @@ Sau đó, bạn chỉ cần gọi phương thức getAuthorsByFirstName trong re
 List<Author> authors = authorRepository.getAuthorsByFirstName("Janssen");
 
 ```
-- khi chạy câu lệnh Spring Data sẽ cung cấp mã bắt buộc để khởi tạo truy vấn cho câu lệnh được cung cấp trong annotation `@Query` của bạn. Sau đó, nó đặt giá trị được cung cấp làm tham số ràng buộc trên truy vấn đó và thực thi nó.
+- khi chạy câu lệnh Spring Data sẽ cung cấp mã bắt buộc để khởi tạo truy vấn cho câu lệnh được cung cấp trong  `@Query` của bạn. Sau đó, nó đặt giá trị được cung cấp làm tham số ràng buộc trên truy vấn đó và thực thi nó.
 ## 1.1. Write Operations as Native Queries 
 
 - để tối ưu hiệu suất Hibernate bạn nên dùng bulk operations để thêm số lượng lớn các dữ liệu bằng cách sử dụng JPQL, Criteria hoặc navtive queries
@@ -55,15 +55,15 @@ public interface AuthorRepository extends CrudRepository<Author, Long>, PagingAn
 ## 2. Limitations of Native Queries With Spring Data JPA
 - khi dùng native queries, có những hạn chế sau :  
 1. Spring Data JPA và persistence provider của bạn không điều chỉnh truy vấn theo phương ngữ SQL cụ thể của cơ sở dữ liệu của bạn. Do đó, bạn cần đảm bảo rằng tất cả RDBMS được hỗ trợ bởi ứng dụng của bạn có thể xử lý câu lệnh được cung cấp.
-2. Khi phân trang kết quả truy vấn gốc yêu cầu thêm một bước.
-3. Spring Data JPA không hỗ trợ sắp xếp động cho các câu lệnh SQL gốc.
+2. Khi phân trang kết quả Native Queries yêu cầu thêm một bước.
+3. Spring Data JPA không hỗ trợ sắp xếp tự động cho các câu lệnh SQL gốc.
 
 - Chúng ta cùng xem xét kỹ hơn hạn chế thứ 2 và thứ 3.
 
 ### 2.1 Thêm truy vấn đếm để phân trang
-- Khi làm việc với truy vấn JPQL tùy chỉnh, bạn có thể thêm tham số kiểu Có thể gắn thẻ vào phương thức lưu trữ của mình. Điều này cho phép phân trang cho kết quả truy vấn của bạn. Spring Data JPA sau đó sẽ thêm tất cả mã soạn sẵn cần thiết để truy xuất kết quả truy vấn từng trang một.
+- Khi làm việc với truy vấn JPQL tùy chỉnh, bạn có thể thêm tham số kiểu ,gắn vào phương thức lưu trữ của mình. Điều này cho phép phân trang cho kết quả truy vấn của bạn. Spring Data JPA sau đó sẽ thêm tất cả mã soạn sẵn cần thiết để truy xuất kết quả truy vấn từng trang một.
 
-- để phân trang bạn Làm tương tự với một native query nhuwng yêu cầu thêm một bước truy vấn đếm trả về tổng số bản ghi có trong kết quả không phân trang. Một cách để làm điều đó là cung cấp Chuỗi truy vấn làm giá trị của thuộc tính countQuery của annotation `@Query`.
+- để phân trang bạn Làm tương tự với một native query nhưng yêu cầu thêm một bước truy vấn đếm trả về tổng số bản ghi có trong kết quả không phân trang. Một cách để làm điều đó là cung cấp Chuỗi truy vấn làm giá trị của thuộc tính countQuery của annotation `@Query`.
 
 ```java
 @Repository
@@ -78,7 +78,7 @@ public interface AuthorRepository extends CrudRepository<Author, Long>, PagingAn
 }
 ```
 
-- Nếu phương thức kho lưu trữ của bạn tham chiếu đến native query được đặt tên, bạn cần cung cấp truy vấn đếm dưới dạng truy vấn được đặt tên thứ hai và thêm hậu tố `.count` vào tên của nó.
+- Nếu phương thức kho lưu trữ của bạn tham chiếu đến native query được đặt tên, bạn cần cung cấp truy vấn đếm dưới dạng truy vấn được gọi lại tên lần thứ hai và thêm hậu tố `.count` vào tên của nó.
 ```java 
 @NamedNativeQuery(name = "Author.getAuthorsByLastName", 
                     query = "select * from author a where a.last_name= ?1", 
