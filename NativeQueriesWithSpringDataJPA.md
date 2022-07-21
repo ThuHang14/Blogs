@@ -31,9 +31,9 @@ List<Author> authors = authorRepository.getAuthorsByFirstName("Janssen");
 
 ```
 - khi chạy câu lệnh Spring Data sẽ cung cấp mã bắt buộc để khởi tạo truy vấn cho câu lệnh được cung cấp trong annotation `@Query` của bạn. Sau đó, nó đặt giá trị được cung cấp làm tham số ràng buộc trên truy vấn đó và thực thi nó.
-## 1.1. Viết hoạt động dưới dạng truy vấn gốc
+## 1.1. Write Operations as Native Queries 
 
-- để tối ưu hiệu suất Hibernate bạn nên dùng bulk operations để thay đổi hoặc loại bỏ một số lượng lớn các bản ghi cơ sở dữ liệu bằng cách sử dụng JPQL, Criteria hoặc navtive queries
+- để tối ưu hiệu suất Hibernate bạn nên dùng bulk operations để thêm số lượng lớn các dữ liệu bằng cách sử dụng JPQL, Criteria hoặc navtive queries
 
 
 - Bạn có thể sử dụng annotation `@Query` để xác định một câu lệnh JPQL hoặc native SQL. Vì các thao tác ghi cần được thực hiện khác với các thao tác đọc, bạn cũng cần chú thích phương thức kho lưu trữ bằng annotation `@Modizing`. Đó là sự khác biệt duy nhất đối với các câu lệnh navtive SQL SELECT .
@@ -89,7 +89,7 @@ public interface AuthorRepository extends CrudRepository<Author, Long>, PagingAn
 public class Author { ... }
 ```
 
-### 2.2 Không có phân trang động
+### 2.2 Không có phân trang tự động
 - Khi làm việc với truy vấn JPQL, bạn có thể thêm tham số kiểu Sắp xếp vào phương thức kho lưu trữ của mình. Điều này cho phép bạn xác định tiêu chí sắp xếp trong thời gian chạy. Spring Data JPA sau đó tạo mệnh đề ORDER BY bắt buộc dựa trên giá trị tham số được cung cấp.
 
 - Rất tiếc, Spring Data JPA không hỗ trợ tính năng này cho các truy vấn gốc. Làm điều đó sẽ yêu cầu Spring Data phân tích câu lệnh được cung cấp và tạo mệnh đề ORDER BY trong phương ngữ dành riêng cho cơ sở dữ liệu. Đây sẽ là một hoạt động rất phức tạp và hiện không được Spring Data JPA hỗ trợ.
