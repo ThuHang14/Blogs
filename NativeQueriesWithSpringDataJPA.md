@@ -1,5 +1,5 @@
 ## Native Queries with Spring Data JPA
-- Spring Data JPA hỗ trợ nhiều cách khác nhau để lấy dữ liệu từ cơ sở dữ liệu của bạn. Một số rất dễ sử dụng, như các truy vấn dẫn xuất ( derived queries) truy vấn tùy chỉnh (custom queries). Truy vấn gốc (Native queries) là tùy chọn linh hoạt nhất và mạnh mẽ nhất giúp bạn đọc dữ liệu.
+- Spring Data JPA hỗ trợ nhiều cách khác nhau để lấy dữ liệu từ cơ sở dữ liệu của bạn. Một số cách rất dễ sử dụng như các truy vấn dẫn xuất ( derived queries), truy vấn tùy chỉnh (custom queries). Trong đó truy vấn gốc (Native queries) là tùy chọn linh hoạt nhất và mạnh mẽ nhất giúp bạn đọc dữ liệu.
 - Các Native queries trong JPA, chúng cung cấp cho bạn quyền truy cập vào tất cả các tính năng được cơ sở dữ liệu của bạn hỗ trợ. Điều đó làm cho chúng phù hợp cho tất cả các trường hợp sử dụng yêu cầu truy vấn phức tạp để trích xuất thông tin cần thiết. Tất nhiên, điều này cũng đúng nếu bạn đang sử dụng các Native queries với Spring Data JPA vì bạn đang sử dụng cùng một cơ chế nội bộ. Spring Data JPA chỉ làm cho việc định nghĩa và thực thi một Native queries dễ dàng hơn một chút.
 -------------------------------------------------------
 1 Defining a Native Query   
