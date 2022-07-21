@@ -97,7 +97,7 @@ public class Author { ... }
 - Tất nhiên, bạn có thể thêm mệnh đề ORDER BY của riêng bạn vào truy vấn của bạn. Nhưng điều đó giới hạn bạn ở một thứ tự cụ thể cho mỗi truy vấn. Nếu bạn cần hỗ trợ nhiều hơn, sử dụng composite repository là cách tốt hơn. Sau đó, bạn có thể triển khai phương pháp truy vấn của riêng mình bằng cách sử dụng API của JPA và chỉ định mệnh đề ORDER BY dựa trên các tham số đầu vào được cung cấp.
 
 ##  kết luận
-- Truy vấn gốc là cách mạnh mẽ và linh hoạt nhất để triển khai các hoạt động đọc của bạn. Chúng cho phép bạn sử dụng tất cả các tính năng được cơ sở dữ liệu của bạn hỗ trợ và Spring Data JPA xử lý hầu hết tất cả các mã soạn sẵn cần thiết.
+- Native queries hoạt động mạnh mẽ và linh hoạt nhất để triển khai các hoạt động đọc dữ liệu của bạn. Chúng cho phép bạn sử dụng tất cả các tính năng được cơ sở dữ liệu của bạn hỗ trợ và Spring Data JPA xử lý hầu hết tất cả các mã soạn sẵn cần thiết.
 
 - Nhưng việc sử dụng chúng tốn nhiều công sức hơn so với derived query và chúng cung cấp một vài hạn chế so với custom JPQL query. Những điều đáng chú ý nhất là:
 
