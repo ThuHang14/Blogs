@@ -7,7 +7,8 @@
 `/api/v1/?topic={topic}` : lọc khóa học theo chủ đề   
 `/api/v1/?name={name}` : lọc khóa học theo tiêu đề  
 ## Admin
-([https://link-url-here.org](https://web-courses-84.herokuapp.com/api/v1/)
+([https://web-courses-84.herokuapp.com/api/v1/admin](https://web-courses-84.herokuapp.com/api/v1/)
+
 
 `[/api/v1/admin](https://web-courses-84.herokuapp.com/api/v1/admin)` : trang chủ Admin   
 `/api/v1/api/v1//admin/course-create` : tạo khóa học  
