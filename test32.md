@@ -1,5 +1,5 @@
 ## User
-[https://springboot-app-course-demo.herokuapp.com/](https://web-courses-84.herokuapp.com/api/v1/](https://springboot-app-course-demo.herokuapp.com/)  
+[https://springboot-app-course-demo.herokuapp.com/](https://springboot-app-course-demo.herokuapp.com/)  
 `/` : trang chủ Khóa Học  
 `/khoa-hoc/onlab` : lấy ra khóa học không trực tuyến  
 `/khoa-hoc/online` : lấy ra khóa học trực tuyến  
