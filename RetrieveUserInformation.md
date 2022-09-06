@@ -40,7 +40,7 @@ public class SecurityController {
     }
 }
 ```
-- API của lớp Authentication rất nhiều framework linh hoạt. Vì lý do này, mã chính của Spring Security chỉ có thể được truy xuất dưới dạng một Đối tượng và cần được ép kiểu đến UserDetails chính xác:
+- API của lớp Authentication rất nhiều framework linh hoạt. Vì vậy Spring Security chỉ có thể được truy xuất dưới dạng một Đối tượng và cần được ép kiểu đến UserDetails chính xác:
 ```java 
 UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 System.out.println("User has authorities: " + userDetails.getAuthorities());
