@@ -16,8 +16,7 @@ if (!(authentication instanceof AnonymousAuthenticationToken)) {
 ```
 - Tuy nhiên có vài nhược điểm khi dùng  này và khả năng kiểm tra không cao, chúng ta sẽ tìm hiểu thêm các giải pháp thay thế cho cách này ở phần dưới .
 3. lấy thông tin người dùng trong Controller
-- hãy bổ sung trong bean annotation `@Controller`.
-- Chúng ta có thể xác định trực tiếp hàm chính dưới dạng đối số phương thức và nó sẽ được giải quyết chính xác bởi framework:
+- Chúng ta có thể xác định trực tiếp hàm chính dưới dạng đối số phương thức :
 ```java 
 @Controller
 public class SecurityController {
