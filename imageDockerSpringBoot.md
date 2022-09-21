@@ -27,6 +27,8 @@ FROM openjdk:17.0.2-oraclelinux8  : nho kiem tra ban update sao cho phu hop vs J
 COPY target/todolist-backend-0.0.1-SNAPSHOT.jar todolist-backend-0.0.1-SNAPSHOT.jar  : 
 
 ENTRYPOINT ["java","-jar","/todolist-backend-0.0.1-SNAPSHOT.jar"]
+
+CMD ["./mvnw","spring-boot:run"]
 ```
 
 3. Build docker image
@@ -53,7 +55,9 @@ xoa thu image bang id docker rmi -f f21e6af883bd (-f : xoa cac lien ket cua nos 
 
 Pull and start/run a container :  docker run -dp 8085:8080 --name todolist-api -v "$(pwd):/app" 14thuhang/todolist-api:v1.0.0
 
-docker ls : xem container nao dang chay 
+docker ps : xem container nao dang chay 
+
+push code & run : docker restart todolist-api-container
 ```
 
 5. Run container chạy thử
